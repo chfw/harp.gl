@@ -140,6 +140,12 @@ export class PoiManager {
             } else {
                 const poiTechnique = technique as PoiTechnique;
                 let imageTextureName = poiTechnique.imageTexture;
+                if (typeof poiTechnique.imageTexturePrefix === "string") {
+                    imageTextureName = poiTechnique.imageTexturePrefix + imageTextureName;
+                }
+                if (typeof poiTechnique.imageTexturePostfix === "string") {
+                    imageTextureName = imageTextureName + poiTechnique.imageTexturePostfix;
+                }
 
                 if (poiGeometry.stringCatalog === undefined) {
                     continue;
@@ -166,8 +172,6 @@ export class PoiManager {
                             assert(poiGeometry.imageTextures.length > i);
                             imageTextureName =
                                 poiGeometry.stringCatalog[poiGeometry.imageTextures[i]];
-                        } else {
-                            imageTextureName = poiTechnique.imageTexture;
                         }
 
                         if (poiTableName !== undefined) {
@@ -404,10 +408,17 @@ export class PoiManager {
         techniqueIdx: number,
         positions: THREE.BufferAttribute
     ) {
-        let imageTexture = technique.imageTexture;
+        let imageTextureName = technique.imageTexture;
+        if (typeof technique.imageTexturePrefix === "string") {
+            imageTextureName = technique.imageTexturePrefix + imageTextureName;
+        }
+        if (typeof technique.imageTexturePostfix === "string") {
+            imageTextureName = imageTextureName + technique.imageTexturePostfix;
+        }
+
         let text: string | undefined;
         if (poiGeometry.stringCatalog !== undefined && poiGeometry.imageTextures !== undefined) {
-            imageTexture = poiGeometry.stringCatalog[poiGeometry.imageTextures[0]];
+            imageTextureName = poiGeometry.stringCatalog[poiGeometry.imageTextures[0]];
             text = poiGeometry.stringCatalog[poiGeometry.texts[0]];
         }
         if (text === undefined) {
@@ -416,7 +427,7 @@ export class PoiManager {
 
         // let the combined image texture name (name of image in atlas, not the URL) and
         // text of the shield be the group key
-        const groupKey = String(imageTexture) + "-" + text;
+        const groupKey = String(imageTextureName) + "-" + text;
         let shieldGroupIndex = this.m_poiShieldGroups.get(groupKey);
         if (shieldGroupIndex === undefined) {
             shieldGroupIndex = this.m_poiShieldGroups.size;
@@ -439,7 +450,7 @@ export class PoiManager {
             text,
             technique,
             techniqueIdx,
-            imageTexture,
+            imageTextureName,
             undefined, // TBD for road shields
             undefined,
             shieldGroupIndex,

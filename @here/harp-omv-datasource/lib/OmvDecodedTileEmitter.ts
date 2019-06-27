@@ -444,6 +444,7 @@ export class OmvDecodedTileEmitter implements IOmvEmitter {
                     const lineMarkerTechnique = technique as LineMarkerTechnique;
                     let imageTexture = lineMarkerTechnique.imageTexture;
 
+                    // TODO: Move to decoder independent parts of code.
                     if (typeof lineMarkerTechnique.imageTextureField === "string") {
                         const imageTextureValue = env.lookup(lineMarkerTechnique.imageTextureField);
                         imageTexture = imageTextureValue as string;

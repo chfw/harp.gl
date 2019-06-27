@@ -74,6 +74,11 @@
             "url": "maki_icons.png",
             "preload": true,
             "atlas": "maki_icons.json"
+        },
+        "road_shields_day_mapbox": {
+            "url": "road_shields_mapbox.png",
+            "preload": true,
+            "atlas": "road_shields_mapbox.json"
         }
     },
     "poiTables": [
@@ -99,6 +104,126 @@
                     "fadeFar": 0.9
                 },
                 "renderOrder": 10
+            },
+            {
+                "description": "highway-roadshield-2",
+                "when": "$layer == 'roads' && (kind == 'highway') && (kind_detail == 'motorway') && has(ref) && (length(ref) <= 2)",
+                "technique": "line-marker",
+                "attr": {
+                    "style": "smallSign",
+                    "label": "ref",
+                    "size": 9.5,
+                    "imageTexture": "default-2",
+                    "iconScale": 1,
+                    "priority": 60,
+                    "minDistance": 200,
+                    "vAlignment": "Center",
+                    "hAlignment": "Center",
+                    "textIsOptional": false,
+                    "iconIsOptional": false,
+                    "textMayOverlap": false,
+                    "iconMayOverlap": false,
+                    "iconReserveSpace": true,
+                    "renderTextDuringMovements": true,
+                    "color": "#000000"
+                },
+                "renderOrder": 10.8
+            },
+            {
+                "description": "highway-roadshield-3",
+                "when": "$layer == 'roads' && (kind == 'highway') && (kind_detail == 'motorway') && has(ref) && (length(ref) == 3)",
+                "technique": "line-marker",
+                "attr": {
+                    "style": "smallSign",
+                    "label": "ref",
+                    "size": 9.5,
+                    "imageTexture": "default-3",
+                    "iconScale": 1,
+                    "priority": 50,
+                    "minDistance": 200,
+                    "vAlignment": "Center",
+                    "hAlignment": "Center",
+                    "textIsOptional": false,
+                    "iconIsOptional": false,
+                    "textMayOverlap": false,
+                    "iconMayOverlap": false,
+                    "iconReserveSpace": true,
+                    "renderTextDuringMovements": true,
+                    "color": "#000000"
+                },
+                "renderOrder": 10.7
+            },
+            {
+                "description": "highway-roadshield-4",
+                "when": "$layer == 'roads' && (kind == 'highway') && (kind_detail == 'motorway') && has(ref) && (length(ref) == 4)",
+                "technique": "line-marker",
+                "attr": {
+                    "style": "smallSign",
+                    "label": "ref",
+                    "size": 9.5,
+                    "imageTexture": "default-4",
+                    "iconScale": 1,
+                    "priority": 40,
+                    "minDistance": 200,
+                    "vAlignment": "Center",
+                    "hAlignment": "Center",
+                    "textIsOptional": false,
+                    "iconIsOptional": false,
+                    "textMayOverlap": false,
+                    "iconMayOverlap": false,
+                    "iconReserveSpace": true,
+                    "renderTextDuringMovements": true,
+                    "color": "#000000"
+                },
+                "renderOrder": 10.6
+            },
+            {
+                "description": "highway-roadshield-5",
+                "when": "$layer == 'roads' && (kind == 'highway') && (kind_detail == 'motorway') && has(ref) && (length(ref) == 5)",
+                "technique": "line-marker",
+                "attr": {
+                    "style": "smallSign",
+                    "label": "ref",
+                    "size": 9.5,
+                    "imageTexture": "default-5",
+                    "iconScale": 1,
+                    "priority": 30,
+                    "minDistance": 200,
+                    "vAlignment": "Center",
+                    "hAlignment": "Center",
+                    "textIsOptional": false,
+                    "iconIsOptional": false,
+                    "textMayOverlap": false,
+                    "iconMayOverlap": false,
+                    "iconReserveSpace": true,
+                    "renderTextDuringMovements": true,
+                    "color": "#000000"
+                },
+                "renderOrder": 10.5
+            },
+            {
+                "description": "highway-roadshield-5+",
+                "when": "$layer == 'roads' && (kind == 'highway') && (kind_detail == 'motorway') && has(ref) && (length(ref) > 5)",
+                "technique": "line-marker",
+                "attr": {
+                    "style": "smallSign",
+                    "label": "ref",
+                    "size": 9.5,
+                    "imageTexture": "default-6",
+                    "iconScale": 1,
+                    "priority": 20,
+                    "minDistance": 200,
+                    "vAlignment": "Center",
+                    "hAlignment": "Center",
+                    "textIsOptional": false,
+                    "iconIsOptional": false,
+                    "textMayOverlap": false,
+                    "iconMayOverlap": false,
+                    "iconReserveSpace": true,
+                    "renderTextDuringMovements": true,
+                    "color": "#000000"
+                },
+                "renderOrder": 10.4
             },
             {
                 "description": "highway-outline",
